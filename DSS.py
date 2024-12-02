@@ -84,7 +84,7 @@ for t in range(simTime):
     for user in fgidleusers:
         r = rd.uniform(0,1)
         if r < lambda5G: # Packet is generated
-            numberOfBits = PacketSizeDist.rvs(size=1)
+            numberOfBits = (PacketSizeDist.rvs(size=1) + 80) * 10 # Inflate packet size by factor of 10 for testing
             distance = (fgPositions[user][0] ** 2 + fgPositions[user][1] ** 2) ** 0.5
             SINR = DF.CalcSINR(distance)
             MCS = DF.SINRtoMCS(SINR, MCSTable)
@@ -110,7 +110,8 @@ for t in range(simTime):
     for user in fgtxusers[:]: # Iterate over a copy of tx users instead of the list itself
         if user[1] == 1: # Indicates 5G user
             # Send the packet
-            AvailRBs -= 1
+            if AvailRBs >= user[2]: # Enough RBs in current time slot for tx
+                AvailRBs -= user[2]
             if AvailRBs == 0:
                 break
             # Remove user from fgtxusers
