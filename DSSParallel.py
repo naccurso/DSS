@@ -9,7 +9,7 @@ def LaunchProcess(inst_args):
     OutputFilename = f'{n5G}_{nNB}_{RBSet}'
 
     ArgString = f'--n5G={n5G} --nNB={nNB} --RBSet={RBSet} --OutputFile={OutputFilename}'
-
+    print(ArgString)
     return_code = subprocess.call(['python', 'DSS.py', ArgString])
     return
 
@@ -25,3 +25,4 @@ for n5G in n5Gs:
 
 cpu_pool = multiprocessing.Pool(processes = len(instance_args), initializer = signal.signal, initargs = (signal.SIGINT, signal.SIG_IGN))
 proc_outputs = cpu_pool.map_async(LaunchProcess, instance_args)
+results = proc_outputs.get()
