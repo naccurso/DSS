@@ -24,6 +24,5 @@ for n5G in n5Gs:
             instance_args.append([n5G, nNB, RBSet])
 
 cpu_pool = multiprocessing.Pool(processes = len(instance_args), initializer = signal.signal, initargs = (signal.SIGINT, signal.SIG_IGN))
-print(len(cpu_pool))
 proc_outputs = cpu_pool.map_async(LaunchProcess, instance_args)
 results = proc_outputs.get()
