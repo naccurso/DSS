@@ -10,7 +10,7 @@ def LaunchProcess(inst_args):
 
     ArgString = f'DSS.py --n5G={n5G} --nNB={nNB} --RBSet={RBSet} --OutputFile={OutputFilename}'
     print(ArgString)
-    return_code = subprocess.call(['python', ArgString])
+    return_code = subprocess.call(['python', ArgString.split(' ')])
     return
 
 
