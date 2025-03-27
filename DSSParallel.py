@@ -8,9 +8,9 @@ def LaunchProcess(inst_args):
     RBSet = inst_args[2]
     OutputFilename = f'{n5G}_{nNB}_{RBSet}'
 
-    ArgString = f'--n5G={n5G} --nNB={nNB} --RBSet={RBSet} --OutputFile={OutputFilename}'
+    ArgString = f'DSS.py --n5G={n5G} --nNB={nNB} --RBSet={RBSet} --OutputFile={OutputFilename}'
     print(ArgString)
-    return_code = subprocess.call(['python', 'DSS.py', ArgString])
+    return_code = subprocess.call(['python', ArgString])
     return
 
 
