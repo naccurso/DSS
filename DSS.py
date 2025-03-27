@@ -15,8 +15,8 @@ parser.add_argument('--Plot', default=False)
 parser.add_argument('--OutputFile')
 
 args = parser.parse_args()
-n5G = args.n5G
-nNB = args.nNB
+n5G = int(args.n5G)
+nNB = int(args.nNB)
 RBSet = range(80, 90) if args.RBSet == 1 else range(91,100)
 Plot = args.Plot
 OutputFile = args.OutputFile
