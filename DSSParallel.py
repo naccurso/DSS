@@ -14,8 +14,8 @@ def LaunchProcess(inst_args):
     return
 
 
-n5Gs = [200, 400, 600]
-nNBs = [10000, 20000, 30000]
+n5Gs = [600]
+nNBs = [12500, 15000, 17500, 22500, 25000, 27500]
 instance_args = []
 
 for n5G in n5Gs:
